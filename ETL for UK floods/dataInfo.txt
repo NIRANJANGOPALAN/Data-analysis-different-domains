@@ -4,3 +4,8 @@ https://environment.data.gov.uk/flood-monitoring/doc/reference#api-requests
 sample endpoint
 get: https://environment.data.gov.uk/flood-monitoring/id/floods
 
+geometry coordinates:
+https://geojson.io/#map=6/52.506/-1.885
+
+esri arcade:
+https://developers.arcgis.com/documentation/
