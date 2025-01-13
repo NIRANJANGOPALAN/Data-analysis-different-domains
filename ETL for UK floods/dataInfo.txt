@@ -1,0 +1,6 @@
+https://environment.data.gov.uk/flood-monitoring/doc/reference#api-requests
+
+
+sample endpoint
+get: https://environment.data.gov.uk/flood-monitoring/id/floods
+

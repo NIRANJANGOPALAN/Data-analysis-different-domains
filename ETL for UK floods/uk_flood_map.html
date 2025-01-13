@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_644d51fae36e4644767033310c7ba85c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 50px; left: 50px; width: 220px; height: 90px; 
+    border:2px solid grey; z-index:9999; font-size:14px; background-color:white;
+    ">&nbsp; <b>Flood Severity</b> <br>
+    &nbsp; <i class="fa fa-map-marker fa-2x" style="color:red"></i>&nbsp; Flood Warning <br>
+    &nbsp; <i class="fa fa-map-marker fa-2x" style="color:orange"></i>&nbsp; Flood Alert <br>
+    &nbsp; <i class="fa fa-map-marker fa-2x" style="color:green"></i>&nbsp; Warning No Longer in Force
+</div>
+    
+            <div class="folium-map" id="map_644d51fae36e4644767033310c7ba85c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_644d51fae36e4644767033310c7ba85c = L.map(
+                "map_644d51fae36e4644767033310c7ba85c",
+                {
+                    center: [54.5, -4.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_918193b6c8f483a3da24b687bd80635b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_918193b6c8f483a3da24b687bd80635b.addTo(map_644d51fae36e4644767033310c7ba85c);
+        
+    
+            var marker_cluster_bb887f4e726d882a23277f9be9f3828d = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_83385ec31271710d987f9f7345e9738d = L.marker(
+                [53.207527, -1.1508311274688166],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_b82f306f914b9b89128859972f40a739 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_83385ec31271710d987f9f7345e9738d.setIcon(icon_b82f306f914b9b89128859972f40a739);
+        
+    
+        var popup_2c7330a7814659b05d1ab90b78bc31a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f45bf1fbebc6a81998dc670a8324d829 = $(`<div id="html_f45bf1fbebc6a81998dc670a8324d829" style="width: 100.0%; height: 100.0%;"><b>River Trent from Cromwell Weir to Gainsborough</b><br>Severity: Flood alert<br>River: River Trent, River Idle<br>County: Lincolnshire, Nottinghamshire<br>Time: 2025-01-12T18:34:33</div>`)[0];
+                popup_2c7330a7814659b05d1ab90b78bc31a2.setContent(html_f45bf1fbebc6a81998dc670a8324d829);
+            
+        
+
+        marker_83385ec31271710d987f9f7345e9738d.bindPopup(popup_2c7330a7814659b05d1ab90b78bc31a2)
+        ;
+
+        
+    
+    
+            var marker_1255257c94897eae102f843406f37813 = L.marker(
+                [51.833333, -1.25],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_4bcc8f555617db8bc29fcfb1197b75a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1255257c94897eae102f843406f37813.setIcon(icon_4bcc8f555617db8bc29fcfb1197b75a9);
+        
+    
+        var popup_8b44d0434cbc58c3708fcb0122cc21f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6b1a5f848f67935f0c238618ba4aa78 = $(`<div id="html_d6b1a5f848f67935f0c238618ba4aa78" style="width: 100.0%; height: 100.0%;"><b>River Cherwell from Lower Heyford down to and including Oxford</b><br>Severity: Flood alert<br>River: River Cherwell, Woodeaton Brook, Bayswater Brook, Marston Brook, Peasmoor Brook<br>County: Oxfordshire<br>Time: 2025-01-12T09:09:55</div>`)[0];
+                popup_8b44d0434cbc58c3708fcb0122cc21f6.setContent(html_d6b1a5f848f67935f0c238618ba4aa78);
+            
+        
+
+        marker_1255257c94897eae102f843406f37813.bindPopup(popup_8b44d0434cbc58c3708fcb0122cc21f6)
+        ;
+
+        
+    
+    
+            var marker_24b03aaf0b7d83c380d59e626ad0e5a2 = L.marker(
+                [51.833333, -1.25],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_16333b58209a1652ed717820b1832d93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_24b03aaf0b7d83c380d59e626ad0e5a2.setIcon(icon_16333b58209a1652ed717820b1832d93);
+        
+    
+        var popup_c7fb1eb8fdd048d7e52ea372408dbda6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75f9e17ac3cf347dc0f5f062d5e44830 = $(`<div id="html_75f9e17ac3cf347dc0f5f062d5e44830" style="width: 100.0%; height: 100.0%;"><b>River Thames for the Abingdon area</b><br>Severity: Warning no longer in force<br>River: River Thames<br>County: Oxfordshire<br>Time: 2025-01-12T09:14:28</div>`)[0];
+                popup_c7fb1eb8fdd048d7e52ea372408dbda6.setContent(html_75f9e17ac3cf347dc0f5f062d5e44830);
+            
+        
+
+        marker_24b03aaf0b7d83c380d59e626ad0e5a2.bindPopup(popup_c7fb1eb8fdd048d7e52ea372408dbda6)
+        ;
+
+        
+    
+    
+            var marker_168377cfdb35e8375e234068406c634c = L.marker(
+                [51.81580975, -0.9205046115745252],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_581e88a633469edd6447dc8e8a1ddc89 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_168377cfdb35e8375e234068406c634c.setIcon(icon_581e88a633469edd6447dc8e8a1ddc89);
+        
+    
+        var popup_b846b95931fc21a3a77fd4b8a633aa9d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc701179461b253cbd66e421ac4f80ac = $(`<div id="html_dc701179461b253cbd66e421ac4f80ac" style="width: 100.0%; height: 100.0%;"><b>River Ray and its tributaries from Shipton Lee to and including Islip</b><br>Severity: Flood alert<br>River: River Ray, Wootten Brook, Doddershall Brook, Tetchwick Brook, Lugershall Brook, Murswell Hill Brook, Cutters Brook, Piddington Brook, Blackthorn Brook, Panshill Brook, Studley Wood Brook, Beckley Brook, Oddington Brook, Gallos Brook, Chipping Farm Stream<br>County: Buckinghamshire, Oxfordshire<br>Time: 2025-01-12T09:09:50</div>`)[0];
+                popup_b846b95931fc21a3a77fd4b8a633aa9d.setContent(html_dc701179461b253cbd66e421ac4f80ac);
+            
+        
+
+        marker_168377cfdb35e8375e234068406c634c.bindPopup(popup_b846b95931fc21a3a77fd4b8a633aa9d)
+        ;
+
+        
+    
+    
+            var marker_cf561b84e5c21abb44ee8e0dcb197b96 = L.marker(
+                [51.81580975, -0.9205046115745252],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_35f1a74371da38cb8f7692336048c851 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_cf561b84e5c21abb44ee8e0dcb197b96.setIcon(icon_35f1a74371da38cb8f7692336048c851);
+        
+    
+        var popup_7aaffe9b217734a2ca038c9e5339a643 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e99732c266eb92adadc51cb3a39885f0 = $(`<div id="html_e99732c266eb92adadc51cb3a39885f0" style="width: 100.0%; height: 100.0%;"><b>River Thame, Horsenden Stream and Chalgrove Brook</b><br>Severity: Flood alert<br>River: River Thame, Horsenden Stream, Chalgrove Brook<br>County: Buckinghamshire, Hertfordshire, Oxfordshire<br>Time: 2025-01-12T09:14:38</div>`)[0];
+                popup_7aaffe9b217734a2ca038c9e5339a643.setContent(html_e99732c266eb92adadc51cb3a39885f0);
+            
+        
+
+        marker_cf561b84e5c21abb44ee8e0dcb197b96.bindPopup(popup_7aaffe9b217734a2ca038c9e5339a643)
+        ;
+
+        
+    
+    
+            var marker_e4482184c6b8f93e90a7cb345c7189b0 = L.marker(
+                [52.379824400000004, 0.2184503099574995],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_007632f81a500207ed4f0a32d182aa37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e4482184c6b8f93e90a7cb345c7189b0.setIcon(icon_007632f81a500207ed4f0a32d182aa37);
+        
+    
+        var popup_d27e4a6a6a5f1ae9eca63cd649d0fc9c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8865ab21a699dc89a4e9e75a5df1483e = $(`<div id="html_8865ab21a699dc89a4e9e75a5df1483e" style="width: 100.0%; height: 100.0%;"><b>Hundred Foot Washes in Cambridgeshire and Norfolk</b><br>Severity: Flood alert<br>River: Old Bedford River, New Bedford River, Hundred Foot Drain, River Delph<br>County: Cambridgeshire, Norfolk<br>Time: 2025-01-12T16:03:48</div>`)[0];
+                popup_d27e4a6a6a5f1ae9eca63cd649d0fc9c.setContent(html_8865ab21a699dc89a4e9e75a5df1483e);
+            
+        
+
+        marker_e4482184c6b8f93e90a7cb345c7189b0.bindPopup(popup_d27e4a6a6a5f1ae9eca63cd649d0fc9c)
+        ;
+
+        
+    
+    
+            var marker_7a122d336da48bd590538f45f23418c5 = L.marker(
+                [52.7741191, -2.3742181],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_5f38ad85bafddef59a55e972e138b82a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7a122d336da48bd590538f45f23418c5.setIcon(icon_5f38ad85bafddef59a55e972e138b82a);
+        
+    
+        var popup_4052d1739c614cba796a5c54ba4b380a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f6146e384f9a4f2d96f25212d1e0a53f = $(`<div id="html_f6146e384f9a4f2d96f25212d1e0a53f" style="width: 100.0%; height: 100.0%;"><b>Tern and Perry catchments</b><br>Severity: Flood alert<br>River: River Tern, River Perry<br>County: Shropshire, Staffordshire, Telford and Wrekin<br>Time: 2025-01-12T09:55:55</div>`)[0];
+                popup_4052d1739c614cba796a5c54ba4b380a.setContent(html_f6146e384f9a4f2d96f25212d1e0a53f);
+            
+        
+
+        marker_7a122d336da48bd590538f45f23418c5.bindPopup(popup_4052d1739c614cba796a5c54ba4b380a)
+        ;
+
+        
+    
+    
+            var marker_ee4cf8325b07cffab42edfed3243aab9 = L.marker(
+                [52.083333, -2.75],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_41a8bec1aab67c92b3c85e4bb2521865 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ee4cf8325b07cffab42edfed3243aab9.setIcon(icon_41a8bec1aab67c92b3c85e4bb2521865);
+        
+    
+        var popup_0c03f032db39012ebf97950d02e9b83d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc69d2070b93ad99295569b105adcf9f = $(`<div id="html_dc69d2070b93ad99295569b105adcf9f" style="width: 100.0%; height: 100.0%;"><b>River Lugg south of Leominster</b><br>Severity: Flood alert<br>River: River Lugg<br>County: Herefordshire<br>Time: 2025-01-12T09:56:07</div>`)[0];
+                popup_0c03f032db39012ebf97950d02e9b83d.setContent(html_dc69d2070b93ad99295569b105adcf9f);
+            
+        
+
+        marker_ee4cf8325b07cffab42edfed3243aab9.bindPopup(popup_0c03f032db39012ebf97950d02e9b83d)
+        ;
+
+        
+    
+    
+            var marker_7b25e862ff37bd57c541044ffad83d09 = L.marker(
+                [52.666667, 1.0],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_bf99c0ebcdc77e0d9c73f39713c47709 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7b25e862ff37bd57c541044ffad83d09.setIcon(icon_bf99c0ebcdc77e0d9c73f39713c47709);
+        
+    
+        var popup_98737aa13219b355ac41b516d09d1af7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33585b60e354604c057508fa55ae42d4 = $(`<div id="html_33585b60e354604c057508fa55ae42d4" style="width: 100.0%; height: 100.0%;"><b>The tidal Rivers Bure, Ant and Thurne</b><br>Severity: Warning no longer in force<br>River: Bure, Ant, Thurne<br>County: Norfolk<br>Time: 2025-01-12T17:00:05</div>`)[0];
+                popup_98737aa13219b355ac41b516d09d1af7.setContent(html_33585b60e354604c057508fa55ae42d4);
+            
+        
+
+        marker_7b25e862ff37bd57c541044ffad83d09.bindPopup(popup_98737aa13219b355ac41b516d09d1af7)
+        ;
+
+        
+    
+    
+            var marker_7b59f72ad5622f5a4be9b680058351a6 = L.marker(
+                [51.161750850000004, -3.0753867062227487],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_8401107e603325a984e8b3126f6e2895 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7b59f72ad5622f5a4be9b680058351a6.setIcon(icon_8401107e603325a984e8b3126f6e2895);
+        
+    
+        var popup_1beca7a553bc66b12abe14f0beec9e91 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_693b8aabf4aff59dde3eb1273fdc163e = $(`<div id="html_693b8aabf4aff59dde3eb1273fdc163e" style="width: 100.0%; height: 100.0%;"><b>River Yeo and River Parrett Moors around Muchelney and Thorney</b><br>Severity: Flood alert<br>River: River Yeo<br>County: Somerset<br>Time: 2025-01-12T10:48:11</div>`)[0];
+                popup_1beca7a553bc66b12abe14f0beec9e91.setContent(html_693b8aabf4aff59dde3eb1273fdc163e);
+            
+        
+
+        marker_7b59f72ad5622f5a4be9b680058351a6.bindPopup(popup_1beca7a553bc66b12abe14f0beec9e91)
+        ;
+
+        
+    
+    
+            var marker_cb474c2d1db17cd134fed8e99e0c4e7c = L.marker(
+                [51.161750850000004, -3.0753867062227487],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_26c7201f34e4fd5a047c318ac9dd6bc3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_cb474c2d1db17cd134fed8e99e0c4e7c.setIcon(icon_26c7201f34e4fd5a047c318ac9dd6bc3);
+        
+    
+        var popup_2c34872fdebcaccecc31e0133cf70da8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3075d4452af7a71bb4eadba1091cb51e = $(`<div id="html_3075d4452af7a71bb4eadba1091cb51e" style="width: 100.0%; height: 100.0%;"><b>West Somerset Streams</b><br>Severity: Flood alert<br>River: Horner Water, River Aller, Washford River, Hawkcombe Stream, Monksilver Stream, Doniford Stream<br>County: Somerset<br>Time: 2025-01-12T10:48:15</div>`)[0];
+                popup_2c34872fdebcaccecc31e0133cf70da8.setContent(html_3075d4452af7a71bb4eadba1091cb51e);
+            
+        
+
+        marker_cb474c2d1db17cd134fed8e99e0c4e7c.bindPopup(popup_2c34872fdebcaccecc31e0133cf70da8)
+        ;
+
+        
+    
+    
+            var marker_2546d67614c1d26f8023a1c114bb727a = L.marker(
+                [51.161750850000004, -3.0753867062227487],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_ae5f0b91b5f25c39e31c5c759a4454b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2546d67614c1d26f8023a1c114bb727a.setIcon(icon_ae5f0b91b5f25c39e31c5c759a4454b7);
+        
+    
+        var popup_438f9c49b240682eb87128477b2e993b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83c2d1976acc7ac0b6889f4779c46203 = $(`<div id="html_83c2d1976acc7ac0b6889f4779c46203" style="width: 100.0%; height: 100.0%;"><b>Lower Tone and Parrett Moors</b><br>Severity: Flood alert<br>River: River Tone, River Parrett<br>County: Somerset<br>Time: 2025-01-12T10:48:06</div>`)[0];
+                popup_438f9c49b240682eb87128477b2e993b.setContent(html_83c2d1976acc7ac0b6889f4779c46203);
+            
+        
+
+        marker_2546d67614c1d26f8023a1c114bb727a.bindPopup(popup_438f9c49b240682eb87128477b2e993b)
+        ;
+
+        
+    
+    
+            var marker_91d27ff0c499ad2a42f7b41b264cd729 = L.marker(
+                [51.7643786, -2.1880661838719386],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_6284f443089f73d424e9b84b8091e815 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_91d27ff0c499ad2a42f7b41b264cd729.setIcon(icon_6284f443089f73d424e9b84b8091e815);
+        
+    
+        var popup_5d2845033b34459c3711f36932b3e2c3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_23a9d376c230455ff28f98338790eb48 = $(`<div id="html_23a9d376c230455ff28f98338790eb48" style="width: 100.0%; height: 100.0%;"><b>River Severn at Apperley and The Leigh</b><br>Severity: Warning no longer in force<br>River: River Severn<br>County: Gloucestershire<br>Time: 2025-01-12T09:20:15</div>`)[0];
+                popup_5d2845033b34459c3711f36932b3e2c3.setContent(html_23a9d376c230455ff28f98338790eb48);
+            
+        
+
+        marker_91d27ff0c499ad2a42f7b41b264cd729.bindPopup(popup_5d2845033b34459c3711f36932b3e2c3)
+        ;
+
+        
+    
+    
+            var marker_4204b97ac91c254080a8eea1acc78f5d = L.marker(
+                [51.4463693, -2.1333779],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_e2124b39653ec4e20e7cde151d1af6ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_4204b97ac91c254080a8eea1acc78f5d.setIcon(icon_e2124b39653ec4e20e7cde151d1af6ad);
+        
+    
+        var popup_28a7765f951ad8778b820abefada6413 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e0ddd0f40c441a60f80fe9b45ac80320 = $(`<div id="html_e0ddd0f40c441a60f80fe9b45ac80320" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in the Salisbury Plain area</b><br>Severity: Flood alert<br>River: Groundwater<br>County: Hampshire, Wiltshire<br>Time: 2025-01-07T18:26:52</div>`)[0];
+                popup_28a7765f951ad8778b820abefada6413.setContent(html_e0ddd0f40c441a60f80fe9b45ac80320);
+            
+        
+
+        marker_4204b97ac91c254080a8eea1acc78f5d.bindPopup(popup_28a7765f951ad8778b820abefada6413)
+        ;
+
+        
+    
+    
+            var marker_a99a2886d8dae13d2afc4c204de170ba = L.marker(
+                [51.7643786, -2.1880661838719386],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_8580a59856c7cdcf98701877a6200ed3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_a99a2886d8dae13d2afc4c204de170ba.setIcon(icon_8580a59856c7cdcf98701877a6200ed3);
+        
+    
+        var popup_e0445c2c90ebda7fbef04ea65daa8f29 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_abf334ddd4e5713f298a393dd2ec5122 = $(`<div id="html_abf334ddd4e5713f298a393dd2ec5122" style="width: 100.0%; height: 100.0%;"><b>River Coln and its tributaries</b><br>Severity: Flood alert<br>River: River Coln, Dudgrove Brook<br>County: Gloucestershire<br>Time: 2025-01-12T09:10:20</div>`)[0];
+                popup_e0445c2c90ebda7fbef04ea65daa8f29.setContent(html_abf334ddd4e5713f298a393dd2ec5122);
+            
+        
+
+        marker_a99a2886d8dae13d2afc4c204de170ba.bindPopup(popup_e0445c2c90ebda7fbef04ea65daa8f29)
+        ;
+
+        
+    
+    
+            var marker_3ad44d61edfe9e8939bae29c806654ae = L.marker(
+                [53.1823034, -0.2031208542548153],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_1fb7da61a7978396330a2d483344039f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3ad44d61edfe9e8939bae29c806654ae.setIcon(icon_1fb7da61a7978396330a2d483344039f);
+        
+    
+        var popup_102f23701b913264b53e82ebdca7beaa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_04e42d2ff8e4bb288e149ac8b989cdd2 = $(`<div id="html_04e42d2ff8e4bb288e149ac8b989cdd2" style="width: 100.0%; height: 100.0%;"><b>Lower River Witham</b><br>Severity: Warning no longer in force<br>River: River Witham, South Delph<br>County: Lincolnshire<br>Time: 2025-01-12T11:45:06</div>`)[0];
+                popup_102f23701b913264b53e82ebdca7beaa.setContent(html_04e42d2ff8e4bb288e149ac8b989cdd2);
+            
+        
+
+        marker_3ad44d61edfe9e8939bae29c806654ae.bindPopup(popup_102f23701b913264b53e82ebdca7beaa)
+        ;
+
+        
+    
+    
+            var marker_7d4d0c2b7158b4f5d37c7c1c6b96e413 = L.marker(
+                [53.873596500000005, -0.5347787525091569],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_fd1fe88dab0a3a73c281f0d171ffca52 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7d4d0c2b7158b4f5d37c7c1c6b96e413.setIcon(icon_fd1fe88dab0a3a73c281f0d171ffca52);
+        
+    
+        var popup_1d9d8d1a1a5a0993544e4bc8988a63a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1045dcaa83d068e0fcdae6fabbf68853 = $(`<div id="html_1045dcaa83d068e0fcdae6fabbf68853" style="width: 100.0%; height: 100.0%;"><b>Upper River Hull catchment</b><br>Severity: Flood alert<br>River: River Hull, Holderness Drain, Barmston Drain<br>County: East Riding of Yorkshire<br>Time: 2025-01-12T20:41:33</div>`)[0];
+                popup_1d9d8d1a1a5a0993544e4bc8988a63a4.setContent(html_1045dcaa83d068e0fcdae6fabbf68853);
+            
+        
+
+        marker_7d4d0c2b7158b4f5d37c7c1c6b96e413.bindPopup(popup_1d9d8d1a1a5a0993544e4bc8988a63a4)
+        ;
+
+        
+    
+    
+            var marker_c45c453ce31cabd7879433d195c91455 = L.marker(
+                [51.44631345, -1.2758819554702914],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_8951b75521db75c3bcdc12ffd297a375 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c45c453ce31cabd7879433d195c91455.setIcon(icon_8951b75521db75c3bcdc12ffd297a375);
+        
+    
+        var popup_ffa38a5b3df189d22cce260f74b92d3a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d306067f14d42b886ac1d228c2bedf76 = $(`<div id="html_d306067f14d42b886ac1d228c2bedf76" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in the Great Shefford area</b><br>Severity: Flood alert<br>River: Groundwater<br>County: West Berkshire<br>Time: 2025-01-07T15:47:28</div>`)[0];
+                popup_ffa38a5b3df189d22cce260f74b92d3a.setContent(html_d306067f14d42b886ac1d228c2bedf76);
+            
+        
+
+        marker_c45c453ce31cabd7879433d195c91455.bindPopup(popup_ffa38a5b3df189d22cce260f74b92d3a)
+        ;
+
+        
+    
+    
+            var marker_8cf05f8cfd92979822525df94c6f5e9a = L.marker(
+                [51.04498135, -1.243313330111055],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_29ca31635793f8da9948bc0b7d8bf4d1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8cf05f8cfd92979822525df94c6f5e9a.setIcon(icon_29ca31635793f8da9948bc0b7d8bf4d1);
+        
+    
+        var popup_ce777ef2cdee8e9db6e195f683e4eec5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d4c545977f2faa0d4deacb9687f58ee3 = $(`<div id="html_d4c545977f2faa0d4deacb9687f58ee3" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in the Candovers and Old Alresford</b><br>Severity: Flood alert<br>River: Groundwater<br>County: Hampshire<br>Time: 2025-01-07T13:31:29</div>`)[0];
+                popup_ce777ef2cdee8e9db6e195f683e4eec5.setContent(html_d4c545977f2faa0d4deacb9687f58ee3);
+            
+        
+
+        marker_8cf05f8cfd92979822525df94c6f5e9a.bindPopup(popup_ce777ef2cdee8e9db6e195f683e4eec5)
+        ;
+
+        
+    
+    
+            var marker_e1f23acde3e739da9a253bd0e594169f = L.marker(
+                [51.840052299999996, -0.09785519224523963],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_05c5ac88da39b5faf3805468c472eca5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e1f23acde3e739da9a253bd0e594169f.setIcon(icon_05c5ac88da39b5faf3805468c472eca5);
+        
+    
+        var popup_730e9b8273ad622b6da5db6f3ecc13f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e38c74360c647621044d3a89d33eaaa9 = $(`<div id="html_e38c74360c647621044d3a89d33eaaa9" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in Flamstead</b><br>Severity: Flood alert<br>River: Groundwater<br>County: Hertfordshire<br>Time: 2025-01-08T17:20:36</div>`)[0];
+                popup_730e9b8273ad622b6da5db6f3ecc13f3.setContent(html_e38c74360c647621044d3a89d33eaaa9);
+            
+        
+
+        marker_e1f23acde3e739da9a253bd0e594169f.bindPopup(popup_730e9b8273ad622b6da5db6f3ecc13f3)
+        ;
+
+        
+    
+    
+            var marker_70d3fdcd37b80a6cbcf33c1c42489e3b = L.marker(
+                [51.840052299999996, -0.09785519224523963],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_f6f3497b880ee51506d3b9b628f86395 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_70d3fdcd37b80a6cbcf33c1c42489e3b.setIcon(icon_f6f3497b880ee51506d3b9b628f86395);
+        
+    
+        var popup_92c26b0259ea6fec781a000ea63f8e84 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d164f296c87c087b2e1ef49ea653e34 = $(`<div id="html_7d164f296c87c087b2e1ef49ea653e34" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in Kimpton and Lilley Bottom</b><br>Severity: Flood alert<br>River: Groundwater<br>County: Hertfordshire<br>Time: 2025-01-08T17:25:25</div>`)[0];
+                popup_92c26b0259ea6fec781a000ea63f8e84.setContent(html_7d164f296c87c087b2e1ef49ea653e34);
+            
+        
+
+        marker_70d3fdcd37b80a6cbcf33c1c42489e3b.bindPopup(popup_92c26b0259ea6fec781a000ea63f8e84)
+        ;
+
+        
+    
+    
+            var marker_7f24cc5c407452ef4456bf64c89f3ad6 = L.marker(
+                [51.44631345, -1.2758819554702914],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_b6900d028b87f26cc62d944e87c35ca5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7f24cc5c407452ef4456bf64c89f3ad6.setIcon(icon_b6900d028b87f26cc62d944e87c35ca5);
+        
+    
+        var popup_702ad04439d35f242efa0b4c52ef85dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e9373a81dadc2bd829f55031a54aa695 = $(`<div id="html_e9373a81dadc2bd829f55031a54aa695" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in West Ilsley, East Ilsley, Compton, Chilton and West Hagbourne</b><br>Severity: Flood alert<br>River: Groundwater<br>County: West Berkshire<br>Time: 2025-01-09T14:16:47</div>`)[0];
+                popup_702ad04439d35f242efa0b4c52ef85dc.setContent(html_e9373a81dadc2bd829f55031a54aa695);
+            
+        
+
+        marker_7f24cc5c407452ef4456bf64c89f3ad6.bindPopup(popup_702ad04439d35f242efa0b4c52ef85dc)
+        ;
+
+        
+    
+    
+            var marker_6663fe244145262d8ff9f71e5f9fca31 = L.marker(
+                [53.873596500000005, -0.5347787525091569],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_5e3c39365c498eadd3bcef3b61a40639 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_6663fe244145262d8ff9f71e5f9fca31.setIcon(icon_5e3c39365c498eadd3bcef3b61a40639);
+        
+    
+        var popup_4f23ba36c9201135b279038011b45a05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e14a188a41421b73489cf7d35f917dc0 = $(`<div id="html_e14a188a41421b73489cf7d35f917dc0" style="width: 100.0%; height: 100.0%;"><b>Low lying properties in the Upper Hull catchment</b><br>Severity: Flood warning<br>River: River Hull<br>County: East Riding of Yorkshire<br>Time: 2025-01-12T20:40:59</div>`)[0];
+                popup_4f23ba36c9201135b279038011b45a05.setContent(html_e14a188a41421b73489cf7d35f917dc0);
+            
+        
+
+        marker_6663fe244145262d8ff9f71e5f9fca31.bindPopup(popup_4f23ba36c9201135b279038011b45a05)
+        ;
+
+        
+    
+    
+            var marker_c5806f5b4e9c077bcebcaa1cb6dbef07 = L.marker(
+                [53.1823034, -0.2031208542548153],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_4b422263ff92a8db92a739be54f56e38 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c5806f5b4e9c077bcebcaa1cb6dbef07.setIcon(icon_4b422263ff92a8db92a739be54f56e38);
+        
+    
+        var popup_2bd07c14062b3b6cbcee0b4c511c6ca6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a7f03fa2eb6a34f877fee6968f87841 = $(`<div id="html_6a7f03fa2eb6a34f877fee6968f87841" style="width: 100.0%; height: 100.0%;"><b>Minor Watercourses from Heighington to Dunston</b><br>Severity: Flood alert<br>River: Heighington Beck, Dunston Beck<br>County: Lincolnshire<br>Time: 2025-01-12T11:48:23</div>`)[0];
+                popup_2bd07c14062b3b6cbcee0b4c511c6ca6.setContent(html_6a7f03fa2eb6a34f877fee6968f87841);
+            
+        
+
+        marker_c5806f5b4e9c077bcebcaa1cb6dbef07.bindPopup(popup_2bd07c14062b3b6cbcee0b4c511c6ca6)
+        ;
+
+        
+    
+    
+            var marker_268ced47662e05c347d95baa169082e9 = L.marker(
+                [51.04498135, -1.243313330111055],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_a80e36269aa34538d5c86f5e9abc48e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_268ced47662e05c347d95baa169082e9.setIcon(icon_a80e36269aa34538d5c86f5e9abc48e7);
+        
+    
+        var popup_f6307c0882ec1f97a1359cb645a6d522 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f39bab81421b4538b0a032bc5aef5d31 = $(`<div id="html_f39bab81421b4538b0a032bc5aef5d31" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in Hursley</b><br>Severity: Flood alert<br>River: Groundwater<br>County: Hampshire<br>Time: 2025-01-06T10:18:09</div>`)[0];
+                popup_f6307c0882ec1f97a1359cb645a6d522.setContent(html_f39bab81421b4538b0a032bc5aef5d31);
+            
+        
+
+        marker_268ced47662e05c347d95baa169082e9.bindPopup(popup_f6307c0882ec1f97a1359cb645a6d522)
+        ;
+
+        
+    
+    
+            var marker_f399bb03b111a0f5dad9f8750311caf5 = L.marker(
+                [51.4463693, -2.1333779],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_05944bdec320f0fb90b18870a031500e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f399bb03b111a0f5dad9f8750311caf5.setIcon(icon_05944bdec320f0fb90b18870a031500e);
+        
+    
+        var popup_899397306b9b38b66101355afc220aa5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e79ab07937e3dc5836e69070c164edd2 = $(`<div id="html_e79ab07937e3dc5836e69070c164edd2" style="width: 100.0%; height: 100.0%;"><b>Groundwater flooding in villages surrounding Andover</b><br>Severity: Flood alert<br>River: Groundwater<br>County: Hampshire, Wiltshire<br>Time: 2025-01-06T10:18:19</div>`)[0];
+                popup_899397306b9b38b66101355afc220aa5.setContent(html_e79ab07937e3dc5836e69070c164edd2);
+            
+        
+
+        marker_f399bb03b111a0f5dad9f8750311caf5.bindPopup(popup_899397306b9b38b66101355afc220aa5)
+        ;
+
+        
+    
+    
+            var marker_0eca711aea0c8832727a0dc962a01861 = L.marker(
+                [53.207527, -1.1508311274688166],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_7e9592c207995c012d05c54c8ea5af2f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0eca711aea0c8832727a0dc962a01861.setIcon(icon_7e9592c207995c012d05c54c8ea5af2f);
+        
+    
+        var popup_c24baa553383d2b8df6a9c4bb5e6337f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_395ca986f7a505ebf056738745cc934b = $(`<div id="html_395ca986f7a505ebf056738745cc934b" style="width: 100.0%; height: 100.0%;"><b>River Trent at Girton</b><br>Severity: Flood warning<br>River: River Trent<br>County: Lincolnshire, Nottinghamshire<br>Time: 2025-01-12T22:29:58</div>`)[0];
+                popup_c24baa553383d2b8df6a9c4bb5e6337f.setContent(html_395ca986f7a505ebf056738745cc934b);
+            
+        
+
+        marker_0eca711aea0c8832727a0dc962a01861.bindPopup(popup_c24baa553383d2b8df6a9c4bb5e6337f)
+        ;
+
+        
+    
+    
+            var marker_4ef0a98bb9b50136be77d8c4c866ef1b = L.marker(
+                [53.207527, -1.1508311274688166],
+                {
+}
+            ).addTo(marker_cluster_bb887f4e726d882a23277f9be9f3828d);
+        
+    
+            var icon_c864af66936fc565a5bf76bf7bece77b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_4ef0a98bb9b50136be77d8c4c866ef1b.setIcon(icon_c864af66936fc565a5bf76bf7bece77b);
+        
+    
+        var popup_4933d8312216e4db2a6565841aecff93 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cabcc186eff2e984b27fe98bc9bade86 = $(`<div id="html_cabcc186eff2e984b27fe98bc9bade86" style="width: 100.0%; height: 100.0%;"><b>Fossdyke Canal</b><br>Severity: Warning no longer in force<br>River: Fossdyke Canal<br>County: Lincolnshire, Nottinghamshire<br>Time: 2025-01-12T11:41:54</div>`)[0];
+                popup_4933d8312216e4db2a6565841aecff93.setContent(html_cabcc186eff2e984b27fe98bc9bade86);
+            
+        
+
+        marker_4ef0a98bb9b50136be77d8c4c866ef1b.bindPopup(popup_4933d8312216e4db2a6565841aecff93)
+        ;
+
+        
+    
+    
+            marker_cluster_bb887f4e726d882a23277f9be9f3828d.addTo(map_644d51fae36e4644767033310c7ba85c);
+        
+</script>
+</html>
